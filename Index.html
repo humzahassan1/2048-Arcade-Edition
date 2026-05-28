@@ -1,28 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>project_2048</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="app.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2048: Arcade Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
-    <body>
-    <div class = "container">
-        <div class = "info">
-            <h1>2048:Arcade Edition</h1>
-            <div class = "score-container">
-                <p class = "score-title">score </p>
-                <h2 id = "score">0</h2>
-            </div>
+<body>
+
+<!-- MODE SELECT SCREEN -->
+<div class="mode-select" id="mode-select">
+  <div class="mode-title">2048</div>
+  <div class="mode-subtitle">arcade edition</div>
+  <div class="mode-buttons">
+    <button class="mode-btn" onclick="startGame('solo')">
+      SOLO
+      <span class="mode-btn-sub">Arrow keys to move</span>
+    </button>
+    <button class="mode-btn" onclick="startGame('versus')">
+      VERSUS
+      <span class="mode-btn-sub">P1: WASD — P2: Arrows</span>
+    </button>
+  </div>
+</div>
+
+<!-- GAME AREA -->
+<div class="game-area" id="game-area">
+  <div class="top-bar">
+    <button class="back-btn" onclick="backToMenu()">← MENU</button>
+    <div>
+      <div class="title">2048</div>
+      <div class="subtitle" id="mode-label">arcade edition</div>
+    </div>
+    <button class="restart-btn" onclick="restartGame()">RESTART</button>
+  </div>
+
+  <div class="game-wrapper" id="game-wrapper">
+    <!-- Player 1 -->
+    <div class="player-side" id="p1-side">
+      <div class="player-label p1-label" id="p1-label">Player 1</div>
+      <div class="score-bar">
+        <div class="score-box p1-score" id="p1-score">0</div>
+        <div>
+          <button class="shuffle-btn" id="p1-shuffle" onclick="useShuffle(0)">⟳ SHUFFLE</button>
+          <div class="shuffle-count" id="p1-shuffle-count">2 left</div>
         </div>
-        <p id="result">Humzas version of <b>2048</b>!</p>
-        <div class = "grid"></div>
+      </div>
+      <div class="grid-container">
+        <div class="grid" id="p1-grid"></div>
+        <div class="overlay hidden" id="p1-overlay">
+          <div class="overlay-text" id="p1-overlay-text"></div>
+          <div class="overlay-sub" id="p1-overlay-sub"></div>
+        </div>
+      </div>
+      <div class="controls-info" id="p1-controls"></div>
     </div>
 
+    <!-- VS Divider (versus only) -->
+    <div class="vs-divider hidden" id="vs-divider">
+      <div class="vs-line"></div>
+      <div class="vs-text">VS</div>
+      <div class="vs-line"></div>
+    </div>
 
+    <!-- Player 2 (versus only) -->
+    <div class="player-side hidden" id="p2-side">
+      <div class="player-label p2-label">Player 2</div>
+      <div class="score-bar">
+        <div class="score-box p2-score" id="p2-score">0</div>
+        <div>
+          <button class="shuffle-btn" id="p2-shuffle" onclick="useShuffle(1)">⟳ SHUFFLE</button>
+          <div class="shuffle-count" id="p2-shuffle-count">2 left</div>
+        </div>
+      </div>
+      <div class="grid-container">
+        <div class="grid" id="p2-grid"></div>
+        <div class="overlay hidden" id="p2-overlay">
+          <div class="overlay-text" id="p2-overlay-text"></div>
+          <div class="overlay-sub" id="p2-overlay-sub"></div>
+        </div>
+      </div>
+      <div class="controls-info">Arrow keys to move</div>
+    </div>
+  </div>
+</div>
 
-
-
+<script src="app.js"></script>
 </body>
 </html>

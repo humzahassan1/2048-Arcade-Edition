@@ -1,74 +1,350 @@
-body{
-  background-color: #B0E0E6 /*#4B9CD3*/;
+:root {
+  --bg: #0a0e1a;
+  --grid-bg: #0d1a2e;
+  --border: #1a3050;
+  --empty: #0b1525;
+  --text: #e0ecff;
+  --accent: #7BAFD4;       /* UNC Carolina Blue */
+  --accent2: #001A57;      /* Duke Blue */
+  --unc-blue: #7BAFD4;
+  --unc-white: #FFFFFF;
+  --duke-blue: #001A57;
+  --duke-white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Share Tech Mono', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(123,175,212,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(0,26,87,0.04) 0%, transparent 50%);
+}
+
+/* ---- MODE SELECT ---- */
+.mode-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 40px;
+}
+
+.mode-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mode-subtitle {
+  font-size: 11px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-top: -20px;
+}
+
+.mode-buttons {
+  display: flex;
+  gap: 24px;
+}
+
+.mode-btn {
+  width: 200px;
+  padding: 28px 20px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.02);
+  color: var(--text);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-align: center;
+}
+
+.mode-btn:hover {
+  border-color: var(--unc-blue);
+  background: rgba(123,175,212,0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(123,175,212,0.12);
+}
+
+.mode-btn-sub {
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  opacity: 0.4;
+  margin-top: 10px;
+}
+
+/* ---- GAME AREA ---- */
+.game-area { display: none; }
+.game-area.active { display: block; }
+
+.top-bar {
   display: flex;
   justify-content: center;
-  font-family: cursive, Helvetica, sans-serif;
-
-
+  align-items: center;
+  padding: 20px;
+  gap: 16px;
 }
 
-h1{
-  font-size: 50px;
-  line-height: 0.7;
-  color: #000080;
-  margin: 0;
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 10px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.back-btn, .restart-btn {
+  padding: 8px 18px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.back-btn:hover, .restart-btn:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.game-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 10px 20px 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.game-wrapper.solo-mode {
+  gap: 0;
+}
+
+.player-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.player-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
   letter-spacing: 3px;
-  line-height: 45px;
+  text-transform: uppercase;
 }
 
-p, h2{
-  margin: 0;
-}
+.p1-label { color: var(--unc-blue); }
+.p2-label { color: #4a7abf; }
 
-.container{
-  width: 468px;
-  margin-top: 30px;
-}
-
-.info{
+.score-bar {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 6px;
 }
 
-.grid{
+.score-box {
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.p1-score { background: rgba(123,175,212,0.1); border: 1px solid rgba(123,175,212,0.4); color: var(--unc-blue); }
+.p2-score { background: rgba(0,26,87,0.3); border: 1px solid rgba(0,26,87,0.6); color: #4a7abf; }
+
+.shuffle-btn {
+  padding: 8px 16px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.shuffle-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.shuffle-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.shuffle-count {
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+.grid-container {
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 6px;
+  border-radius: 8px;
+  background: var(--grid-bg);
+  border: 2px solid var(--border);
+  width: 320px;
+  height: 320px;
+}
+
+#p1-grid {
+  border-color: rgba(123,175,212,0.3);
+}
+
+#p2-grid {
+  border-color: rgba(0,26,87,0.5);
+  background: #0c1428;
+}
+
+.solo-mode .grid {
+  width: 380px;
+  height: 380px;
+}
+
+.solo-mode .tile {
+  font-size: 28px;
+}
+
+.tile {
+  border-radius: 4px;
   display: flex;
-  flex-wrap: wrap;
-  width: 456px;
-  height: 456px;
-  background-color: #4B9CD3;
-  border: 7px solid #000080;
-  border-radius: 6px;
-  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  transition: background-color 0.15s, box-shadow 0.3s, transform 0.1s;
+  position: relative;
+  user-select: none;
 }
 
-.grid div {
-  width: 100px;
-  height: 100px;
-  margin: 7px;
-  border-radius: 3px;
-  background-color: #000080;
-  color: #000080;
-  font-weight: bold;
+.tile.merged { animation: pop 0.2s ease-out; }
+.tile.spawned { animation: spawn 0.2s ease-out; }
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@keyframes spawn {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+}
+
+.overlay-text {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.overlay-sub {
+  font-size: 12px;
+  opacity: 0.6;
+  letter-spacing: 2px;
+}
+
+.hidden { display: none !important; }
+
+.vs-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 60px;
+}
+
+.vs-text {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.vs-line {
+  width: 2px;
+  height: 150px;
+  background: linear-gradient(180deg, var(--unc-blue), transparent, #4a7abf);
+  opacity: 0.3;
+}
+
+.controls-info {
   text-align: center;
-  font-size: 60px;
-  line-height: 1.6;
+  font-size: 10px;
+  opacity: 0.4;
+  letter-spacing: 1px;
+  line-height: 1.8;
 }
 
-.score-container{
-  text-align: center;
-  width: 70px;
-  height: 60px;
-  border-radius: 3px;
-  background-color: #4B9CD3;
-  color: #000080;
-
-}
-
-#score{
-  font-size: 30px;
-}
-
-.score-title{
-  font-size: 16px;
+@media (max-width: 800px) {
+  .game-wrapper { flex-direction: column; align-items: center; gap: 20px; }
+  .vs-divider { display: none; }
+  .grid { width: 280px; height: 280px; }
+  .tile { font-size: 18px; }
+  .solo-mode .grid { width: 320px; height: 320px; }
+  .mode-buttons { flex-direction: column; }
 }
