@@ -5,15 +5,15 @@ A browser-based twist on the classic 2048 puzzle game, built with vanilla JavaSc
 
 ## Features
 
-**Solo Mode** — The classic 2048 experience. Use arrow keys to slide tiles, merge matching numbers, and try to reach 2048. Hit 2048 and you can keep going for a higher score.
+**Solo Mode** - The classic 2048 experience. Use arrow keys to slide tiles, merge matching numbers, and try to reach 2048. Hit 2048 and you can keep going for a higher score.
 
-**Versus Mode** — Two players on the same keyboard. Player 1 uses WASD, Player 2 uses arrow keys. Both players play until their boards lock up, then the highest score wins. No instant eliminations — if you die first, the other player keeps going, so the final score is what matters.
+**Versus Mode** - Two players on the same keyboard. Player 1 uses WASD, Player 2 uses arrow keys. Both players play until their boards lock up, then the highest score wins. No instant eliminations - if you die first, the other player keeps going, so the final score is what matters.
 
-**Shuffle Power-Up** — Each player gets 2 shuffle charges per game. Activating a shuffle randomly rearranges all tiles on your board using a Fisher-Yates shuffle. It can break you out of a deadlock or make things worse — use it wisely.
+**Shuffle Power-Up** - Each player gets 2 shuffle charges per game. Activating a shuffle randomly rearranges all tiles on your board using a Fisher-Yates shuffle. It can break you out of a deadlock or make things worse — use it wisely.
 
-**Tile Glow** — Tiles emit a glow effect that scales with their value. Low tiles have a subtle shimmer, mid-range tiles glow brighter, and high-value tiles radiate a double-layer bloom.
+**Tile Glow** - Tiles emit a glow effect that scales with their value. Low tiles have a subtle shimmer, mid-range tiles glow brighter, and high-value tiles radiate a double-layer bloom.
 
-**UNC vs Duke Theming** — Player 1's board uses a Carolina Blue color palette, and Player 2's board is themed in Duke Blue. The grid borders, score boxes, and overlays all match.
+**UNC vs Duke Theming** - Player 1's board uses a Carolina Blue color palette, and Player 2's board is themed in Duke Blue. The grid borders, score boxes, and overlays all match.
 
 ## How to Play
 
