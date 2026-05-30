@@ -1,5 +1,6 @@
 # 2048: Arcade Edition
 https://humzahassan1.github.io/2048-Arcade-Edition/
+
 A browser-based twist on the classic 2048 puzzle game, built with vanilla JavaScript and the DOM API. Features a solo mode, a local two-player versus mode, a shuffle power-up, and tile glow effects that intensify as values climb.
 
 ## Features
